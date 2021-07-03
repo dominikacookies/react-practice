@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super (props);
+
+    this.state = {
+      name: "Friend"
+    }
+  }
+
+  generateGreeting = (event) => {
+    event.preventDefault()
+    
+    this.setState({
+      name: document.getElementById("name").value
+    })
+
+  }
+
+  render() {
+    return (
+      <section>
+        <div className="container">
+          <h1> Hello {this.state.name}</h1> 
+        </div>
+        <div>
+          <form onSubmit={this.generateGreeting}>
+            <div className="mb-3 row">
+              <div className="col-sm-10">
+                <input
+                  type="input"
+                  className="form-control"
+                  id="name"
+                  placeholder="Name"
+                  onChange={this.handleLengthChange}
+                />
+              </div>
+            </div>
+              <button type="submit" className="btn btn-primary">
+                Generate greeting
+              </button>
+          </form> 
+        </div>
+      </section>
+    )
+  }
 }
 
 export default App;
