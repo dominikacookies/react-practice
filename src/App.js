@@ -1,5 +1,9 @@
 import { Component } from "react";
 
+import NameForm from "./components/NameForm"
+
+
+
 class App extends Component {
   constructor(props) {
     super (props);
@@ -20,27 +24,10 @@ class App extends Component {
 
   render() {
     return (
-      <section>
-        <div className="container">
+      <section className="main-container">
+        <div className="content">
           <h1> Hello {this.state.name}</h1> 
-        </div>
-        <div>
-          <form onSubmit={this.generateGreeting}>
-            <div className="mb-3 row">
-              <div className="col-sm-10">
-                <input
-                  type="input"
-                  className="form-control"
-                  id="name"
-                  placeholder="Name"
-                  onChange={this.handleLengthChange}
-                />
-              </div>
-            </div>
-              <button type="submit" className="btn btn-primary">
-                Generate greeting
-              </button>
-          </form> 
+          <NameForm onSubmit= {this.generateGreeting} />
         </div>
       </section>
     )
